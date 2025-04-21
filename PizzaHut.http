@@ -1,0 +1,24 @@
+@PizzaHut_HostAddress = http://localhost:5050
+
+GET {{PizzaHut_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{PizzaHut_HostAddress}}/api/Pizza
+Accept: application/json
+
+###
+
+GET {{PizzaHut_HostAddress}}/api/Pizza/1
+Accept: application/json
+
+###
+
+POST {{PizzaHut_HostAddress}}/api/Pizza
+Content-Type: application/json
+{
+  "Id":0,
+  "Name":"Pizza",
+  "GultenFree":false,"
+}
