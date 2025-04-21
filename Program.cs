@@ -1,6 +1,7 @@
 using PizzaHut.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.EntityFrameworkCore;
+using PizzaHut.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 //Database connection
 builder.Services.AddDbContext<PizzaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PizzaDb")));
+
+builder.Services.AddScoped<LatencyFilter>();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PizzaHut.Data;
 using PizzaHut.Models;
+using PizzaHut.Filters;
 
 namespace PizzaHut.Controllers;
 
@@ -16,8 +17,9 @@ public class PizzaDBController : ControllerBase
     }
 
     // GET: api/PizzaDB
+    [ServiceFilter(typeof(LatencyFilter))]
     [HttpGet]
-    public async Task<ActionResult<Pizza>> GetPizzas()
+    public async Task<ActionResult<List<Pizza>>> GetPizzas()
     {
         return await _context.Pizzas.ToListAsync();
     }
